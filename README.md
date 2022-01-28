@@ -11,5 +11,5 @@ How to run this?
 
 
 To do: 
-[] Write Test case
-[] Add option to expand more than 5 letter word
+- [ ] Write Test case
+- [ ] Add option to expand more than 5 letter word
