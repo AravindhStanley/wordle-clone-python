@@ -1,4 +1,5 @@
 import random
+from collections import Counter
 from rich.prompt import Prompt
 from rich import print
 from .words import words
