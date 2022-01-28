@@ -9,9 +9,8 @@ def clear():
         _ = os.system('cls')
     else:
         _ = os.system('clear')
-
-
-if __name__ == "__main__":
+        
+def main():
     puzzle = Wordle()
     console = Console()
     table = Table(title="Guesses", box=None)
@@ -35,3 +34,7 @@ if __name__ == "__main__":
 
     if not status:
         console.print(f'\n\n☹️  [bold red]Correct Word is {puzzle.chosen_word.upper()} [/bold red]')
+
+
+if __name__ == "__main__":
+    main()
