@@ -8,3 +8,8 @@ How to run this?
 3. Activate the virtual env with `source venv/bin/activate`
 4. Install necessary requirements - `pip3 install -r requirements.txt`
 5. Run the main file - `python3 main.py`
+
+
+To do: 
+[] Write Test case
+[] Add option to expand more than 5 letter word
