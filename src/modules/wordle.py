@@ -17,10 +17,10 @@ class Wordle:
         self.user_guess = Prompt.ask(f"\n\n[gray]Guess your word ({remaining} guess left) [/gray]").strip()
         if len(self.user_guess) != self.max_words:
             print('\n [red]--- Wait a minute.... That ain\'t a five letter word !!!! --- \n')
-            self.get_user_guess()
+            self.get_user_guess(remaining=remaining)
         elif self.user_guess not in self.words:
             print('\n [red]--- Oops! Not a valid word!!!! --- \n')  
-            self.get_user_guess()
+            self.get_user_guess(remaining=remaining)
         
     def _select_word(self):
         random_index = int(
