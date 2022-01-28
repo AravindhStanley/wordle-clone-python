@@ -33,20 +33,45 @@ class Wordle:
 
     def check_word(self):
         user_guess_validated  = []
-        user_guess = list(self.user_guess)
-        system_word = list(self.chosen_word)
-        # print(Columns(user_guess))
-            
 
-        for idx, user_word in enumerate(user_guess):
-            temp = {'letter': user_word}
-            if user_word == system_word[idx]:
+        ## Stings converted to list
+        user_guess = list(self.user_guess)
+        system_word = list(self.chosen_word)    
+
+        ## Count of each words is in the list
+        guess_count = dict(Counter(user_guess))
+        correct_count = dict(Counter(system_word))
+
+
+        ## Check for exact match
+        for idx, ltr in enumerate(user_guess):
+            temp = {'letter': ltr, 'index':idx}
+            if ltr == system_word[idx]:
+                print(idx, ltr, "matches")
+                correct_count[ltr] -= 1
                 temp['color'] = 'spring_green3'
-            elif user_word in system_word:
-                temp['color'] = 'orange1'
+                user_guess_validated.append(temp)
             else:
                 temp['color'] = 'grey84'
-            user_guess_validated.append(temp)
+                user_guess_validated.append(temp)
+
+        ## Sort the Validated result with index key
+        user_guess_validated = sorted(user_guess_validated, key=lambda x: x['index'])
+
+        ## Check for letter presence in the correct word
+        for idx, ltr in enumerate(user_guess):
+            if ltr in system_word:
+                ## Exceute only when there is a remaining letter on the correct word
+                if correct_count[ltr] != 0:
+                    ## If its already found to be an exact match, ignore it else, change it to orange1
+                    if user_guess_validated[idx]['color'] != "spring_green2":
+                        user_guess_validated[idx]['color'] = 'orange1'
+                        ## Once Changed reduce the count
+                        correct_count[ltr] -= 1
+                    ## If the count is negative, automatically assume the letter is not present.
+                    elif correct_count[ltr] < 1:
+                        user_guess_validated[idx]['color'] = 'grey84'
+
 
         ## Check if the word is correct directly
         if self.is_correct_guess():
