@@ -29,9 +29,7 @@ class Wordle:
         return self.words[random_index].lower()
 
     def is_correct_guess(self):
-        if self.chosen_word.lower() == self.user_guess.lower():
-            return True
-        return False
+        return self.chosen_word.lower() == self.user_guess.lower()
 
     def check_word(self):
         user_guess_validated  = []
