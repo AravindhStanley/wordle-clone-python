@@ -50,7 +50,7 @@ class Wordle:
             if ltr == system_word[idx]:
                 print(idx, ltr, "matches")
                 correct_count[ltr] -= 1
-                temp['color'] = 'spring_green3'
+                temp['color'] = 'spring_green2'
                 user_guess_validated.append(temp)
             else:
                 temp['color'] = 'grey84'
