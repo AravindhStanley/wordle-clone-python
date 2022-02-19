@@ -9,6 +9,7 @@ class Wordle:
 
     def __init__(self):
         self.words:list = words.get('five_letter')
+        self.valid_words:list = words.get("valid_word")
         self.chosen_word:str = self._select_word()
         self.max_words = 5
         self.user_guess:str = ""
@@ -19,7 +20,7 @@ class Wordle:
         if len(self.user_guess) != self.max_words:
             print('\n [red]--- Wait a minute.... That ain\'t a five letter word !!!! --- \n')
             self.get_user_guess(remaining=remaining)
-        elif self.user_guess not in self.words:
+        elif self.user_guess not in self.words and self.user_guess not in self.valid_words:
             print('\n [red]--- Oops! Not a valid word!!!! --- \n')  
             self.get_user_guess(remaining=remaining)
         
